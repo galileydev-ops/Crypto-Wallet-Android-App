@@ -88,6 +88,13 @@ fun VerifyEmailScreen(viewModel: AuthViewModel) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            Text(
+                text = stringResource(R.string.resend_code_message, email),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
+                textAlign = TextAlign.Center
+            )
+
             TextButton(
                 onClick = { viewModel.resendEmailOTP() }
             ) {

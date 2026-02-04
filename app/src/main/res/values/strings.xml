@@ -11,5 +11,6 @@
     <string name="verification_email_text">We sent a verification code to\n%s</string>
     <string name="verification_code_label">Verification code</string>
     <string name="verify_code_button">Verify Code</string>
+    <string name="resend_code_message">Didn\'t receive code?</string>
     <string name="resend_code_button">Resend Code</string>
 </resources>
