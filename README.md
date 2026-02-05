@@ -7,7 +7,6 @@ A simple crypto wallet app using **Dynamic SDK**, with email OTP login, wallet v
 * **Login:** Email OTP authentication
 * **Wallet:** Connect via Dynamic SDK, fetch balance, send transactions
 * **UI:** Jetpack Compose screens:
-
     1. Login & OTP verification
     2. Wallet details (balance, network, address)
     3. Send transaction
@@ -19,7 +18,7 @@ A simple crypto wallet app using **Dynamic SDK**, with email OTP login, wallet v
 1. Clone the repository:
 
 ```
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git clone https://github.com/galileydev-ops/Crypto-Wallet-Android-App.git
 cd YOUR_REPO
 ```
 
@@ -31,9 +30,14 @@ cd YOUR_REPO
 
 ## Screenshots
 
-* **Login & OTP Verification:** ![Login](screenshots/login.jpg)
-* **Wallet Details:** ![Wallet](screenshots/wallet_details.jpg)
-* **Send Transaction:** ![Send](screenshots/send_transaction.jpg)
+**Login & OTP Verification**  
+![Login](screenshots/login.jpg)
+
+**Wallet Details**  
+![Wallet](screenshots/wallet_details.jpg)
+
+**Send Transaction**  
+![Send](screenshots/send_transaction.jpg)
 
 ## Assumptions
 
