@@ -36,14 +36,15 @@ import com.example.cryptowallet.screens.auth.AuthViewModel
 @Composable
 fun VerifyEmailScreen(
     viewModel: AuthViewModel,
-    onNavigateNext: () -> Unit,
+    email: String,
+    onWalletDetails: () -> Unit,
     onNavigateBack: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
 
     LaunchedEffect(state.authSuccessful) {
         if (state.authSuccessful) {
-            onNavigateNext()
+            onWalletDetails()
         }
     }
 
@@ -83,7 +84,7 @@ fun VerifyEmailScreen(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = stringResource(R.string.verification_email_text, state.email),
+                    text = stringResource(R.string.verification_email_text, email),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Color.Gray,
                     textAlign = TextAlign.Center
@@ -130,7 +131,7 @@ fun VerifyEmailScreen(
 
                 Button(
                     onClick = { viewModel.resendEmailOTP() },
-                    enabled = !state.isLoading
+                    enabled = !state.isLoading && state.otp.isNotEmpty()
                 ) {
                     if (state.isLoading) {
                         CircularProgressIndicator(

@@ -27,12 +27,12 @@ import androidx.compose.ui.unit.dp
 import com.example.cryptowallet.R
 
 @Composable
-fun LoginScreen(viewModel: AuthViewModel, onNavigateNext: () -> Unit) {
+fun LoginScreen(viewModel: AuthViewModel, onVerifyEmail: () -> Unit) {
     val state by viewModel.state.collectAsState()
 
     LaunchedEffect(state.otpSent) {
         if (state.otpSent) {
-            onNavigateNext()
+            onVerifyEmail()
         }
     }
 
@@ -81,7 +81,7 @@ fun LoginScreen(viewModel: AuthViewModel, onNavigateNext: () -> Unit) {
             Button(
                 onClick = { viewModel.sendEmailOTP() },
                 modifier = Modifier.fillMaxWidth(),
-                enabled = !state.isLoading
+                enabled = !state.isLoading && state.email.isNotEmpty()
             ) {
                 if (state.isLoading) {
                     CircularProgressIndicator(

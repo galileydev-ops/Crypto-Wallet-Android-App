@@ -1,5 +1,6 @@
 package com.example.cryptowallet.screens.auth
 
+import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dynamic.sdk.android.DynamicSDK
@@ -28,6 +29,11 @@ class AuthViewModel @Inject constructor() : ViewModel() {
         val emailTrimmed = _state.value.email.trim()
         if (emailTrimmed.isEmpty()) {
             _state.value = _state.value.copy(errorMessage = "Email cannot be empty")
+            return
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailTrimmed).matches()) {
+            _state.value = _state.value.copy(errorMessage = "Invalid email address")
             return
         }
 

@@ -15,6 +15,7 @@
     <string name="resend_code_message">Didn\'t receive code?</string>
     <string name="resend_code_button">Resend Code</string>
 
+    <!--Wallet screen-->
     <string name="wallet_title">Wallet Details</string>
     <string name="address_label">Address</string>
     <string name="current_network_label">Current Network</string>
@@ -22,4 +23,12 @@
     <string name="copy_address_button">Copy Address</string>
     <string name="send_transaction_button">Send Transaction</string>
     <string name="logout_button">Logout</string>
+
+    <!--Send transaction screen-->
+    <string name="send_transaction_title">Send Transaction</string>
+    <string name="recipient_label">Recipient Address</string>
+    <string name="amount_label">Amount (ETH)</string>
+    <string name="transaction_successful">Transaction sent successfully!</string>
+    <string name="tx_hash_label">Tx Hash: %1$s...%2$s</string>
+    <string name="view_on_etherscan">View on Etherscan</string>
 </resources>

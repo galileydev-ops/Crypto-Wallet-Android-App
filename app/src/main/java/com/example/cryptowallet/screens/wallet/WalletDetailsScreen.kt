@@ -23,14 +23,13 @@ import androidx.compose.ui.unit.sp
 import com.dynamic.sdk.android.Models.ChainEnum
 import com.example.cryptowallet.R
 import com.example.cryptowallet.enums.NetworkEnum
-import com.example.cryptowallet.screens.auth.AuthViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WalletDetailsScreen(
     walletModel: WalletViewModel,
-    authModel: AuthViewModel,
     onLogout: () -> Unit,
+    onSendTransaction: () -> Unit,
     onNavigateBack: () -> Unit
 ) {
     val state by walletModel.state.collectAsState()
@@ -106,17 +105,18 @@ fun WalletDetailsScreen(
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Button(onClick = { /* TODO: send transaction */ }, modifier = Modifier.fillMaxWidth()) {
+                Button(
+                    onClick = { onSendTransaction() },
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = state.address.isNotEmpty()
+                ) {
                     Text(stringResource(R.string.send_transaction_button))
                 }
 
                 Spacer(modifier = Modifier.height(8.dp))
 
                 OutlinedButton(
-                    onClick = {
-                        authModel.logout()
-                        onLogout()
-                    },
+                    onClick = { onLogout() },
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error)
                 ) {
