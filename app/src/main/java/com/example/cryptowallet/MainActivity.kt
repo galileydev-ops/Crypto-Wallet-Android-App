@@ -10,7 +10,7 @@ import com.dynamic.sdk.android.DynamicSDK
 import com.dynamic.sdk.android.UI.DynamicUI
 import com.dynamic.sdk.android.core.ClientProps
 import com.dynamic.sdk.android.core.LoggerLevel
-import com.example.cryptowallet.ui.navigation.NavGraph
+import com.example.cryptowallet.navigation.NavGraph
 import com.example.cryptowallet.ui.theme.CryptoWalletTheme
 import dagger.hilt.android.AndroidEntryPoint
 

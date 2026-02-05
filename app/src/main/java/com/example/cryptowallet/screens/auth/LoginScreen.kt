@@ -1,4 +1,4 @@
-package com.example.cryptowallet.ui.screens
+package com.example.cryptowallet.screens.auth
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -27,9 +28,7 @@ import com.example.cryptowallet.R
 
 @Composable
 fun LoginScreen(viewModel: AuthViewModel, onNavigateNext: () -> Unit) {
-    val email by viewModel.email.collectAsState()
     val state by viewModel.state.collectAsState()
-    val errorMessage by viewModel.errorMessage.collectAsState()
 
     LaunchedEffect(state.otpSent) {
         if (state.otpSent) {
@@ -38,14 +37,15 @@ fun LoginScreen(viewModel: AuthViewModel, onNavigateNext: () -> Unit) {
     }
 
     Box(
-        modifier = Modifier.fillMaxSize().padding(16.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
         contentAlignment = Alignment.Center
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxWidth()
         ) {
-
             Icon(
                 painter = painterResource(id = R.drawable.logo),
                 contentDescription = null,
@@ -61,7 +61,7 @@ fun LoginScreen(viewModel: AuthViewModel, onNavigateNext: () -> Unit) {
             )
 
             Text(
-                text =  stringResource(R.string.sign_in_prompt),
+                text = stringResource(R.string.sign_in_prompt),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
             )
@@ -69,7 +69,7 @@ fun LoginScreen(viewModel: AuthViewModel, onNavigateNext: () -> Unit) {
             Spacer(modifier = Modifier.height(24.dp))
 
             TextField(
-                value = email,
+                value = state.email,
                 onValueChange = { viewModel.updateEmail(it) },
                 label = { Text(stringResource(R.string.email_label)) },
                 singleLine = true,
@@ -81,13 +81,22 @@ fun LoginScreen(viewModel: AuthViewModel, onNavigateNext: () -> Unit) {
             Button(
                 onClick = { viewModel.sendEmailOTP() },
                 modifier = Modifier.fillMaxWidth(),
+                enabled = !state.isLoading
             ) {
-                Text(stringResource(R.string.send_otp_button))
+                if (state.isLoading) {
+                    CircularProgressIndicator(
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        strokeWidth = 2.dp,
+                        modifier = Modifier.size(24.dp)
+                    )
+                } else {
+                    Text(stringResource(R.string.send_otp_button))
+                }
             }
 
-            if (errorMessage != null) {
+            state.errorMessage?.let { error ->
                 Spacer(modifier = Modifier.height(20.dp))
-                Text(errorMessage!!)
+                Text(error, color = MaterialTheme.colorScheme.error)
             }
         }
     }

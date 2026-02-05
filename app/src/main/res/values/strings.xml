@@ -7,10 +7,19 @@
     <string name="send_otp_button">Send Email OTP</string>
 
     <!--Verify email screen-->
+    <string name="verify_email_title">Verify email</string>
     <string name="check_email">Check your email</string>
     <string name="verification_email_text">We sent a verification code to\n%s</string>
     <string name="verification_code_label">Verification code</string>
     <string name="verify_code_button">Verify Code</string>
     <string name="resend_code_message">Didn\'t receive code?</string>
     <string name="resend_code_button">Resend Code</string>
+
+    <string name="wallet_title">Wallet Details</string>
+    <string name="address_label">Address</string>
+    <string name="current_network_label">Current Network</string>
+    <string name="balance_label">Balance</string>
+    <string name="copy_address_button">Copy Address</string>
+    <string name="send_transaction_button">Send Transaction</string>
+    <string name="logout_button">Logout</string>
 </resources>
