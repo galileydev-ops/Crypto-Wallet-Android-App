@@ -30,7 +30,7 @@ cd YOUR_REPO
 
 ## Screenshots
 
-**Login & OTP Verification**  
+**Login**  
 ![Login](screenshots/login.jpg)
 
 **Wallet Details**  
