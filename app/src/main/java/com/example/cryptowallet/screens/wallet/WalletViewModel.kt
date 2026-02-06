@@ -19,14 +19,15 @@ class WalletViewModel @Inject constructor() : ViewModel() {
     private val _state = MutableStateFlow(WalletScreenState())
     val state: StateFlow<WalletScreenState> = _state.asStateFlow()
 
-    fun connectWallet(network: NetworkEnum, chainEnum: ChainEnum) {
+    fun connectSepoliaWallet() {
         _state.value = _state.value.copy(isLoading = true, errorMessage = null)
 
+        val network = NetworkEnum.SEPOLIA
         viewModelScope.launch {
             val sdk = DynamicSDK.getInstance()
             runCatching {
                 val wallet = sdk.wallets.userWallets.firstOrNull {
-                    it.chain.equals(chainEnum.value, ignoreCase = true)
+                    it.chain.equals(ChainEnum.EVM.value, ignoreCase = true)
                 } ?: throw Exception("No wallet found")
 
                 sdk.wallets.switchNetwork(wallet, Network.evm(network.chainId))
